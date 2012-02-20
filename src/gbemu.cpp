@@ -11,7 +11,7 @@ int main(int argc, char** argv)
     return 1;
   }
 
-  gbemu::mapped_file f(argv[1]);
+  gbemu::utils::mapped_file f(argv[1]);
 
   f.map();
 }

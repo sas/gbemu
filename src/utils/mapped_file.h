@@ -6,7 +6,7 @@
 
 # include <stdint.h>
 
-namespace gbemu {
+namespace gbemu { namespace utils {
 
 class mapped_file
 {
@@ -39,6 +39,6 @@ private:
   uint64_t            _size;
 };
 
-}
+}}
 
 #endif /* !UTILS_MAPPED_FILE_H_ */

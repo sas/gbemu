@@ -8,7 +8,7 @@
 
 #include "mapped_file.h"
 
-namespace gbemu {
+namespace gbemu { namespace utils {
 
 mapped_file::mapped_file(const std::string& path)
   : _path(path), _is_mapped(false), _begin(nullptr), _size(0)
@@ -56,4 +56,4 @@ const char* mapped_file::get_path() const
   return _path.c_str();
 }
 
-}
+}}
