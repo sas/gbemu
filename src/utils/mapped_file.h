@@ -16,15 +16,17 @@ public:
 
   void map();
   void unmap();
-  const char* get_path() const;
+
+  const std::string& getpath_() const { return path_; }
+  uint64_t getsize_() const { return size_; }
 
   template<typename T>
   const T& read(uint64_t offset) const
   {
-    if (offset >= this->_size)
-      throw std::out_of_range(this->_path);
+    if (offset >= this->size_)
+      throw std::out_of_range(path_);
 
-    return *((T*) (this->_begin + offset));
+    return *((T*) (begin_ + offset));
   }
 
   char operator[](uint64_t offset) const
@@ -33,10 +35,10 @@ public:
   }
 
 private:
-  const std::string&  _path;
-  bool                _is_mapped;
-  const char*         _begin;
-  uint64_t            _size;
+  std::string path_;
+  bool        is_mapped_;
+  const char* begin_;
+  uint64_t    size_;
 };
 
 }}

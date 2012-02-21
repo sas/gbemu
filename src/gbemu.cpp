@@ -1,5 +1,7 @@
 #include <iostream>
 
+#include <cartridge.h>
+#include <cpu/registers.h>
 #include <utils/mapped_file.h>
 
 int main(int argc, char** argv)
@@ -11,7 +13,10 @@ int main(int argc, char** argv)
     return 1;
   }
 
-  gbemu::utils::mapped_file f(argv[1]);
+  gbemu::cpu::registers r;
 
-  f.map();
+  r.hl = 0x4269;
+
+  std::cout << std::hex << (int)r.h << " " << (int)r.l << std::endl;
+  std::cout << std::hex << r.hl << std::endl;
 }

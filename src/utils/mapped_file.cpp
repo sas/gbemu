@@ -11,14 +11,14 @@
 namespace gbemu { namespace utils {
 
 mapped_file::mapped_file(const std::string& path)
-  : _path(path), _is_mapped(false), _begin(nullptr), _size(0)
+  : path_(path), is_mapped_(false), begin_(nullptr), size_(0)
 {
 }
 
 mapped_file::~mapped_file()
 {
-  if (_is_mapped)
-    unmap();
+  if (is_mapped_)
+    this->unmap();
 }
 
 void mapped_file::map()
@@ -27,8 +27,8 @@ void mapped_file::map()
   struct stat buf;
   char* begin;
   
-  if ((fd = open(get_path(), O_RDONLY)) == -1)
-    throw std::invalid_argument(_path + std::string(": ") + std::string(strerror(errno)));
+  if ((fd = open(path_.c_str(), O_RDONLY)) == -1)
+    throw std::invalid_argument(path_ + std::string(": ") + std::string(strerror(errno)));
 
   if (fstat(fd, &buf) == -1)
     throw std::runtime_error(std::string("fstat: ") + std::string(strerror(errno)));
@@ -38,22 +38,17 @@ void mapped_file::map()
 
   close(fd);
 
-  _is_mapped = true;
-  _begin = begin;
-  _size = buf.st_size;
+  is_mapped_ = true;
+  begin_ = begin;
+  size_ = buf.st_size;
 }
 
 void mapped_file::unmap()
 {
-  if (munmap((void*) _begin, _size) == -1)
+  if (munmap((void*) begin_, size_) == -1)
     throw std::runtime_error(std::string("munmap: ") + std::string(strerror(errno)));
 
-  _is_mapped = false;
-}
-
-const char* mapped_file::get_path() const
-{
-  return _path.c_str();
+  is_mapped_ = false;
 }
 
 }}
