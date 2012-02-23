@@ -1,5 +1,6 @@
 #include <iostream>
 
+#include <memory.h>
 #include <cpu/registers.h>
 #include <debug/cartridge.h>
 #include <utils/mapped_file.h>
@@ -11,16 +12,25 @@ namespace gbemu {
       gb(const gbemu::utils::mapped_file& cartridge)
         : cartridge_(cartridge)
       {
+        memory_.add_read_handler(
+            { 0, 42 },
+            [](uint16_t off){ std::cout << "read at offset " << off << std::endl; return 69; }
+        );
       }
 
       void run()
       {
+        for (uint16_t o = 10; o < 20; ++o)
+        {
+          std::cout << memory_[o] << std::endl;
+        }
       }
 
     private:
       const gbemu::utils::mapped_file& cartridge_;
 
       gbemu::cpu::registers registers_;
+      gbemu::memory memory_;
   };
 }
 
@@ -36,11 +46,6 @@ int main(int argc, char** argv)
   /* open the cartridge */
   gbemu::utils::mapped_file f(argv[1]);
   f.map();
-
-#ifndef NDEBUG
-  gbemu::debug::cartridge c(f);
-  c.dump(std::cout);
-#endif /* !NDEBUG */
 
   /* create the emulator and run */
   gbemu::gb gb(f);

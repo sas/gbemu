@@ -27,7 +27,7 @@ private:
       return *this;
     }
 
-    operator uint16_t ()
+    operator uint16_t()
     {
       return (msb_ << 8) | lsb_;
     }

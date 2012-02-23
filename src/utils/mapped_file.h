@@ -26,9 +26,9 @@ public:
     return *((T*) (begin_ + offset));
   }
 
-  char operator[](uint64_t offset) const
+  uint8_t operator[](uint64_t offset) const
   {
-    return this->read<char>(offset);
+    return this->read<uint8_t>(offset);
   }
 
   const std::string& getpath_() const { return path_; }
