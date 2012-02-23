@@ -1,5 +1,5 @@
-#ifndef DEBUG_CARTRIDGE_H_
-# define DEBUG_CARTRIDGE_H_
+#ifndef MEMORY_CARTRIDGE_H_
+# define MEMORY_CARTRIDGE_H_
 
 # include <iostream>
 
@@ -7,7 +7,7 @@
 
 # include <utils/mapped_file.h>
 
-namespace gbemu { namespace debug {
+namespace gbemu { namespace memory {
 
 struct cartridge
 {
@@ -27,4 +27,4 @@ struct cartridge
 
 }}
 
-#endif /* !DEBUG_CARTRIDGE_H_ */
+#endif /* !MEMORY_CARTRIDGE_H_ */

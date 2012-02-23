@@ -2,7 +2,7 @@
 
 #include "cartridge.h"
 
-namespace gbemu { namespace debug {
+namespace gbemu { namespace memory {
 
 namespace { namespace to_str {
   static std::map<uint8_t, std::string> cgb_flag = {

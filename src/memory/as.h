@@ -1,5 +1,5 @@
-#ifndef MEMORY_H_
-# define MEMORY_H_
+#ifndef MEMORY_AS_H_
+# define MEMORY_AS_H_
 
 # include <algorithm>
 # include <stdexcept>
@@ -8,9 +8,9 @@
 
 # include <stdint.h>
 
-namespace gbemu {
+namespace gbemu { namespace memory {
 
-class memory
+class as
 {
   private:
     /*
@@ -118,6 +118,6 @@ class memory
     > write_handlers_;
 };
 
-}
+}}
 
-#endif /* !MEMORY_H_ */
+#endif /* !MEMORY_AS_H_ */

@@ -36,7 +36,7 @@ $(TARGET): $(OBJS)
 %.o: %.cpp
 	$(call echo, "CXX\t$<")
 	@mkdir -p $(dir $@)
-	$(CXX) $(CXXFLAGS) -MMD -c $< -o $@
+	$(CXX) $(CXXFLAGS) -MMD -MP -c $< -o $@
 
 clean:
 	$(call echo, "RM\t$(OBJS)")

@@ -1,8 +1,8 @@
 #include <iostream>
 
-#include <memory.h>
 #include <cpu/registers.h>
-#include <debug/cartridge.h>
+#include <memory/as.h>
+#include <memory/cartridge.h>
 #include <utils/mapped_file.h>
 
 namespace gbemu {
@@ -12,7 +12,7 @@ namespace gbemu {
       gb(const gbemu::utils::mapped_file& cartridge)
         : cartridge_(cartridge)
       {
-        memory_.add_read_handler(
+        as_.add_read_handler(
             { 0, 42 },
             [](uint16_t off){ std::cout << "read at offset " << off << std::endl; return 69; }
         );
@@ -22,7 +22,7 @@ namespace gbemu {
       {
         for (uint16_t o = 10; o < 20; ++o)
         {
-          std::cout << memory_[o] << std::endl;
+          std::cout << as_[o] << std::endl;
         }
       }
 
@@ -30,7 +30,7 @@ namespace gbemu {
       const gbemu::utils::mapped_file& cartridge_;
 
       gbemu::cpu::registers registers_;
-      gbemu::memory memory_;
+      gbemu::memory::as as_;
   };
 }
 
