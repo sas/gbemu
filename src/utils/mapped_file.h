@@ -17,9 +17,6 @@ public:
   void map();
   void unmap();
 
-  const std::string& getpath_() const { return path_; }
-  uint64_t getsize_() const { return size_; }
-
   template<typename T>
   const T& read(uint64_t offset) const
   {
@@ -33,6 +30,9 @@ public:
   {
     return this->read<char>(offset);
   }
+
+  const std::string& getpath_() const { return path_; }
+  uint64_t getsize_() const { return size_; }
 
 private:
   std::string path_;
