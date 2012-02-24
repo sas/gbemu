@@ -5,24 +5,24 @@
 
 # include <stdint.h>
 
+# include <memory/as.h>
 # include <utils/mapped_file.h>
 
 namespace gbemu { namespace memory {
 
-struct cartridge
+class cartridge
 {
-  cartridge(const gbemu::utils::mapped_file& file);
-  void dump(std::ostream& out) const;
+  public:
+    cartridge(gbemu::memory::as& as, const gbemu::utils::mapped_file& rom);
 
-  std::string title;
-  uint8_t cgb_flag;
-  uint8_t sgb_flag;
-  uint8_t cartridge_type;
-  uint8_t rom_size;
-  uint8_t ram_size;
-  uint8_t destination_code;
-  uint8_t header_checksum;
-  uint16_t global_checksum;
+  private:
+    void register_handlers_romonly(gbemu::memory::as& as);
+    void register_handlers_mbc1(gbemu::memory::as& as);
+    void register_handlers_mbc2(gbemu::memory::as& as);
+    void register_handlers_mbc3(gbemu::memory::as& as);
+    void register_handlers_mbc5(gbemu::memory::as& as);
+
+    const gbemu::utils::mapped_file& rom_;
 };
 
 }}

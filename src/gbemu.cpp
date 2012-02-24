@@ -3,34 +3,28 @@
 #include <cpu/registers.h>
 #include <memory/as.h>
 #include <memory/cartridge.h>
+#include <memory/ram.h>
 #include <utils/mapped_file.h>
 
 namespace gbemu {
   class gb
   {
     public:
-      gb(const gbemu::utils::mapped_file& cartridge)
-        : cartridge_(cartridge)
+      gb(const gbemu::utils::mapped_file& rom)
+        : cartridge_(as_, rom), ram_(as_)
       {
-        as_.add_read_handler(
-            { 0, 42 },
-            [](uint16_t off){ std::cout << "read at offset " << off << std::endl; return 69; }
-        );
       }
 
       void run()
       {
-        for (uint16_t o = 10; o < 20; ++o)
-        {
-          std::cout << as_[o] << std::endl;
-        }
+        std::cout << as_[0x134] << as_[0x135] << as_[0x136] << std::endl;
       }
 
     private:
-      const gbemu::utils::mapped_file& cartridge_;
-
       gbemu::cpu::registers registers_;
       gbemu::memory::as as_;
+      gbemu::memory::cartridge cartridge_;
+      gbemu::memory::ram ram_;
   };
 }
 
@@ -43,11 +37,11 @@ int main(int argc, char** argv)
     return 1;
   }
 
-  /* open the cartridge */
-  gbemu::utils::mapped_file f(argv[1]);
-  f.map();
+  /* open the rom */
+  gbemu::utils::mapped_file rom(argv[1]);
+  rom.map();
 
   /* create the emulator and run */
-  gbemu::gb gb(f);
+  gbemu::gb gb(rom);
   gb.run();
 }

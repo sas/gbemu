@@ -82,7 +82,7 @@ class as
         auto range = e.first;
         auto handler = e.second;
 
-        if (range.first <= addr && addr < range.second)
+        if (range.first <= addr && addr <= range.second)
         {
           rh = handler;
           read_offset = addr - range.first;
@@ -95,7 +95,7 @@ class as
         auto range = e.first;
         auto handler = e.second;
 
-        if (range.first <= addr && addr < range.second)
+        if (range.first <= addr && addr <= range.second)
         {
           wh = handler;
           write_offset = addr - range.first;
