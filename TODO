@@ -1,0 +1,10 @@
+* MBCs inside the cartridge
+* External RAM in the cartridge
+* VRAM
+* Sprites
+* HRAM
+* CPU instructions emulation
+* I/O ports
+* Interrupts
+
+* CGB mode
