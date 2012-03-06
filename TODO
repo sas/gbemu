@@ -1,8 +1,26 @@
-* VRAM
-* Sprites
-* HRAM
-* CPU instructions emulation
-* I/O ports
-* Interrupts
+General Memory Map
 
-* CGB mode
+[DONE]  0000-3FFF   16KB ROM Bank 00     (in cartridge, fixed at bank 00)
+[DONE]  4000-7FFF   16KB ROM Bank 01..NN (in cartridge, switchable bank number)
+[TODO]  8000-9FFF   8KB Video RAM (VRAM) (switchable bank 0-1 in CGB Mode)
+[DONE]  A000-BFFF   8KB External RAM     (in cartridge, switchable bank, if any)
+[DONE]  C000-CFFF   4KB Work RAM Bank 0 (WRAM)
+[DONE]  D000-DFFF   4KB Work RAM Bank 1 (WRAM)  (switchable bank 1-7 in CGB Mode)
+[DONE]  E000-FDFF   Same as C000-DDFF (ECHO)    (typically not used)
+[TODO]  FE00-FE9F   Sprite Attribute Table (OAM)
+[DONE]  FEA0-FEFF   Not Usable
+[TODO]  FF00-FF7F   I/O Ports
+[TODO]  FF80-FFFE   High RAM (HRAM)
+[TODO]  FFFF        Interrupt Enable Register
+
+
+CPU
+
+[TODO]  Instructions
+[DONE]  Registers
+[TODO]  Interrupts
+
+
+Misc
+
+[TODO]  CGB mode
