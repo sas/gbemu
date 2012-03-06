@@ -10,7 +10,7 @@ General Memory Map
 [TODO]  FE00-FE9F   Sprite Attribute Table (OAM)
 [DONE]  FEA0-FEFF   Not Usable
 [TODO]  FF00-FF7F   I/O Ports
-[TODO]  FF80-FFFE   High RAM (HRAM)
+[DONE]  FF80-FFFE   High RAM (HRAM)
 [TODO]  FFFF        Interrupt Enable Register
 
 
