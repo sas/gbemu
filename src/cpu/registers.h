@@ -22,14 +22,14 @@ private:
 
     double_assign_proxy& operator=(uint16_t val)
     {
-      msb_ = val >> 8;
-      lsb_ = val & 0xff;
+      this->msb_ = val >> 8;
+      this->lsb_ = val & 0xff;
       return *this;
     }
 
     operator uint16_t()
     {
-      return (msb_ << 8) | lsb_;
+      return (this->msb_ << 8) | this->lsb_;
     }
 
   private:

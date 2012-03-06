@@ -31,12 +31,12 @@ class as
 
         operator T()
         {
-          return read_handler_(read_offset_);
+          return this->read_handler_(this->read_offset_);
         }
 
         rw_proxy& operator=(const T& val)
         {
-          write_handler_(write_offset_, val);
+          this->write_handler_(this->write_offset_, val);
           return *this;
         }
 
@@ -51,13 +51,13 @@ class as
     void add_read_handler(std::pair<uint16_t, uint16_t> range,
                           std::function<uint8_t (uint16_t)> handler)
     {
-      read_handlers_[range] = handler;
+      this->read_handlers_[range] = handler;
     }
 
     void add_write_handler(std::pair<uint16_t, uint16_t> range,
                            std::function<void (uint16_t, uint8_t)> handler)
     {
-      write_handlers_[range] = handler;
+      this->write_handlers_[range] = handler;
     }
 
     rw_proxy<uint8_t> operator[](uint16_t addr) const

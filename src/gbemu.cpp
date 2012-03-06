@@ -10,7 +10,7 @@ namespace gbemu {
   class gb
   {
     public:
-      gb(const gbemu::utils::mapped_file& rom)
+      gb(const utils::mapped_file& rom)
         : cartridge_(as_, rom), ram_(as_)
       {
       }
@@ -21,10 +21,10 @@ namespace gbemu {
       }
 
     private:
-      gbemu::cpu::registers registers_;
-      gbemu::memory::as as_;
-      gbemu::memory::cartridge cartridge_;
-      gbemu::memory::ram ram_;
+      cpu::registers registers_;
+      memory::as as_;
+      memory::cartridge cartridge_;
+      memory::ram ram_;
   };
 }
 

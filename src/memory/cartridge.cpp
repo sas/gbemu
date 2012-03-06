@@ -4,7 +4,7 @@
 
 namespace gbemu { namespace memory {
 
-cartridge::cartridge(gbemu::memory::as& as, const gbemu::utils::mapped_file& rom)
+cartridge::cartridge(memory::as& as, const utils::mapped_file& rom)
   : mode_select_(mode_select::rom), rom_(rom), rom_bank_(1), ram_bank_(0), ram_enabled_(false)
 {
   uint8_t cartridge_type = rom.read<uint8_t>(0x147);
@@ -66,7 +66,7 @@ cartridge::cartridge(gbemu::memory::as& as, const gbemu::utils::mapped_file& rom
   );
 }
 
-void cartridge::init_romonly(gbemu::memory::as&)
+void cartridge::init_romonly(memory::as&)
 {
   /*
   ** This makes sure that the first 32KB of the address space are mapped to the
@@ -75,7 +75,7 @@ void cartridge::init_romonly(gbemu::memory::as&)
   this->rom_bank_ = 1;
 }
 
-void cartridge::init_mbc1(gbemu::memory::as& as)
+void cartridge::init_mbc1(memory::as& as)
 {
   /*
   ** Create the external RAM banks that this MBC supports.
@@ -155,7 +155,7 @@ void cartridge::init_mbc1(gbemu::memory::as& as)
   );
 }
 
-void cartridge::init_mbc2(gbemu::memory::as& as)
+void cartridge::init_mbc2(memory::as& as)
 {
   /*
   ** Create the built-in RAM block that this MBC suports.
@@ -217,7 +217,7 @@ void cartridge::init_mbc2(gbemu::memory::as& as)
   );
 }
 
-void cartridge::init_mbc3(gbemu::memory::as& as)
+void cartridge::init_mbc3(memory::as& as)
 {
   /*
   ** Create the external RAM banks that this MBC supports.
@@ -304,7 +304,7 @@ void cartridge::init_mbc3(gbemu::memory::as& as)
   );
 }
 
-void cartridge::init_mbc5(gbemu::memory::as& as)
+void cartridge::init_mbc5(memory::as& as)
 {
   /*
   ** Create the external RAM banks that this MBC supports.

@@ -2,7 +2,7 @@
 
 namespace gbemu { namespace memory {
 
-ram::ram(gbemu::memory::as& as)
+ram::ram(memory::as& as)
   : high_ram_(127)
 {
   /*
