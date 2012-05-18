@@ -25,7 +25,7 @@ MAKEFLAGS		+= --no-builtin-rules --no-builtin-variables
 MAKEFLAGS		+= --warn-undefined-variables
 .SUFFIXES:		.cpp .o .h .S
 
-.PHONY: clean distclean rebuild
+.PHONY:			all clean distclean rebuild
 
 all: $(TARGET)
 
