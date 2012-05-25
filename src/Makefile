@@ -1,6 +1,7 @@
 CUR_DIR	:= src
 
 SRCS	:= gbemu.cpp			\
+	   cpu/instr.cpp		\
 	   memory/cartridge.cpp		\
 	   memory/ram.cpp		\
 	   utils/mapped_file.cpp	\

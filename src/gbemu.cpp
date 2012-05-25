@@ -1,5 +1,6 @@
 #include <iostream>
 
+#include <cpu/instr.h>
 #include <cpu/registers.h>
 #include <memory/as.h>
 #include <memory/cartridge.h>
@@ -17,7 +18,18 @@ namespace gbemu {
 
       void run()
       {
-        std::cout << as_[0x134] << as_[0x135] << as_[0x136] << std::endl;
+        /* dump rom name */
+        for (uint16_t addr = 0x134; addr < 0x142; ++addr)
+          std::cout << as_[addr];
+        std::cout << std::endl;
+
+        /* run */
+        for (uint16_t addr = 0; addr < 42000; ++addr)
+        {
+          gbemu::cpu::instr* instr = gbemu::cpu::decode(as_, addr);
+          instr->dump(std::cout);
+          delete instr;
+        }
       }
 
     private:
