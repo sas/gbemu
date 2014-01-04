@@ -1,2 +1,5 @@
+*.o
+*.d
 .*.swp
+gbemu
 build/
