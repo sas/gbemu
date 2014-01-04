@@ -20,6 +20,6 @@ make -f ../Makefile
 ```
 
 
-## Docuementation
+## Documentation
 
 * http://www.pastraiser.com/cpu/gameboy/gameboy_opcodes.html
