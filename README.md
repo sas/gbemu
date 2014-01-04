@@ -3,11 +3,13 @@ GBemu
 
 ## Build
 
+Just type `make` :)
+
+Or, for an out-of-tree build:
 ```
 mkdir build
 cd build
-../configure
-make
+make -f ../Makefile
 ```
 
 
