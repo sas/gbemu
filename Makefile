@@ -29,8 +29,6 @@ clean:
 distclean: clean
 	rm -f $(TARGET)
 
-rebuild: distclean $(TARGET)
-
-.PHONY: clean distclean rebuild
+.PHONY: clean distclean
 
 -include $(DEPENDS)
