@@ -20,6 +20,7 @@ make -f ../Makefile
 ```
 
 
-## Documentation
+## Links
 
 * http://www.pastraiser.com/cpu/gameboy/gameboy_opcodes.html
+* http://blargg.8bitalley.com/parodius/gb-tests/
